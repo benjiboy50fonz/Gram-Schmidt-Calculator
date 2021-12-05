@@ -37,6 +37,7 @@ class Calculator(Frame):
         
         # The entry boxes for the vectors.
         self.entries = []
+        self.labels = []
         self.rowPositions = []
         self.columnPoisitions = []
         
@@ -69,7 +70,9 @@ class Calculator(Frame):
         
         # Add titles.
         for i in range(self.columnsNeeded):
-            Label(self, text="V{}".format(str(i+1))).grid(row=startRow, column=startColumn+i, sticky=N, padx=4)
+            temp = Label(self, text="V{}".format(str(i+1)))
+            temp.grid(row=startRow, column=startColumn+i, sticky=N, padx=4)
+            self.labels.append(temp)
         
         # Increment it since we just added vector names.
         startRow += 1
@@ -92,6 +95,9 @@ class Calculator(Frame):
         """
             
         vectors = []
+                
+        if self.columnsNeeded == 0 or self.rowsNeeded == 0:
+            return
         
         for i in range(self.columnsNeeded):
             vectors.append([])
@@ -99,13 +105,29 @@ class Calculator(Frame):
         try:
             for entry in self.entries:
                 vector = entry[1]
+                if '' == entry[0].get():
+                    return
                 vectors[vector].append(int(entry[0].get()))
                 
         except(TypeError):
             return
             
-        result = calculate(vectors)
-        print(result)
+        result = calculate(vectors) 
+        
+        # Output the result to the GUI.
+        self.displayResult(result)
+        
+    def displayResult(self, result):
+        """
+        Display the result in the GUI.
+        This is nothing fancy.
+        """
+        
+        for i in range(len(result)):
+            for j in range(len(result[i])):
+                result[i][j] = float(result[i][j])
+        
+        Label(self, text="Result:\n{}".format(result)).grid(row=3, column=0, columnspan=2, sticky=N)
         
     def clear(self):
         """
@@ -113,6 +135,12 @@ class Calculator(Frame):
         """
         
         for entry in self.entries:
-            entry[0].delete(0, END)
+            entry[0].grid_forget()
+        
+        for label in self.labels:
+            label.grid_forget()
+        
+        self.entries = []
+        self.labels = []
                                 
 Calculator().mainloop()
