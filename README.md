@@ -21,3 +21,10 @@ The calculator offers the following features:
 - The ability to use any *m* x *n* matrix. 
 - Short circuit feature if the basis is already an orthogonal basis. 
 - GUI for easy use.
+
+### Note: This application requires tkinter. 
+
+Don't have it? No worries. Install with:
+```
+pip install tk
+```
