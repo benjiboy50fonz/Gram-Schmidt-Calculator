@@ -16,11 +16,14 @@ def calculate(vectors: list):
         vectors[vector] = Vector(vectors[vector])
         
     # Check to see if they are already orthogonal.
-    for i in range(len(vectors)-1):
-        if not Vector.isOrthogonal(vectors[i], vectors[i+1]):
-            break                   # We found a pair of non-orthogonal vectors. Carry on.
-        if i == len(vectors)-2:     # If all are orthogonal, return because no work needs to be done.
-            return False
+    count = 0
+    for i in range(len(vectors)):
+        if Vector.isOrthogonal(vectors[i], vectors[i-1]):
+            count += 1
+            
+    # If they are already orthogonal, return false.
+    if count == len(vectors):
+        return [x.value for x in vectors]
         
     # Perform the algorithm.
     for i in range(len(vectors)):
@@ -31,4 +34,4 @@ def calculate(vectors: list):
             break
         
     # Return the result.
-    return [x.value for x in newValue]
+    return [[round(z, 3) for z in x.value] for x in newValue]
