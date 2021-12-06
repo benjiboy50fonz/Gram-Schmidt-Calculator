@@ -23,7 +23,7 @@ The calculator offers the following features:
 - GUI for easy use.
 
 ## Usage
-1. Clone the repository. 
+1. Clone/download the repository. 
 2. Run `main.py` with Python 3.
 
 ### Note: this application requires tkinter. 
