@@ -22,6 +22,10 @@ The calculator offers the following features:
 - Short circuit feature if the basis is already an orthogonal basis. 
 - GUI for easy use.
 
+## Usage
+1. Clone the repository. 
+2. Run `main.py` with Python 3.
+
 ### Note: this application requires tkinter. 
 
 Don't have it? No worries. Install it with:
