@@ -16,7 +16,7 @@ Given a basis <img src="/eqs/x1p.png"> for a nonzero subspace *W* of <img src="/
 
 so that <img src="/eqs/v1p.png"> is an orthogonal basis for *W*.
 
-## Calculator Capabilities
+## Calculator Features
 The calculator offers the following features:
 - The ability to use any *m* x *n* matrix. 
 - Short circuit feature if the basis is already an orthogonal basis. 
